@@ -8,8 +8,10 @@ WORKDIR /app
 COPY poetry.lock pyproject.toml app.py /app/
 RUN poetry install --no-root --no-dev
 
-COPY ./files /app/common/
+
 COPY ./src /app/src/
+COPY ./bin /app/bin/
+
 
 CMD echo "test"
 
