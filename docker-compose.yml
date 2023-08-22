@@ -1,0 +1,18 @@
+version: "3"
+services:
+  vehiloan:
+    container_name: vehiloan
+    build:
+      context: .
+      dockerfile: ./deployment/docker/Dockerfile
+    depends_on:
+      - vehiloan-postgres
+    environment:
+      - DB_HOST=vehiloan-postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_PORT=5432
+      - DB_NAME=vehiloan
+      - CONFIG_ENV=PRODUCTION
+      - PYTHONDONTWRITEBYTECODE=1
+    command: poetry run uvicorn app:app --workers 1 --host
