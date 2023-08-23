@@ -4,5 +4,5 @@ services:
     container_name: credit_simulator
     build:
       context: .
-      dockerfile: ./deployment/docker/Dockerfile
+      dockerfile: ./deployment/Dockerfile
 
