@@ -31,8 +31,8 @@ jobs:
         run: |
          docker-compose up --build -d
          docker start customer_service && docker ps
-         docker exec -i poetry run black --check . && poetry run isort --check-only .
-         docker exec -i poetry run pytest tests
+         docker exec -i customer_service poetry run black --check . && poetry run isort --check-only .
+         docker exec -i customer_service poetry run pytest tests
          docker-compose down
 
 
