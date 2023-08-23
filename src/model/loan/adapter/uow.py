@@ -4,7 +4,7 @@ from src.model.loan.adapter.repository import LoanRepository
 from typing import List
 class LoanUnitOfWork(LoanAbstractUnitOfWork):
 
-    def __init__(self, session):
+    def __init__(self):
         self.loan = LoanRepository()
         self.commited = False
 

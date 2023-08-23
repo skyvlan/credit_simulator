@@ -1,8 +1,11 @@
 from src.model.loan.domain.entity import Loan, Vehicle, LoanOutput
+from src.model.loan.adapter.uow import LoanUnitOfWork
 from typing import List
 import math
 class LoanService:
-    def __init__(self, uow):
+    def __init__(self, uow: LoanUnitOfWork):
+        self.loan = uow.loan.get_loan()
+        self.vehicle = uow.loan.get_vehicle()
         self.base_interest_car_rate = 0.08
         self.base_interest_motor_rate = 0.09
 
