@@ -3,8 +3,8 @@ from src.model.loan.domain.interface import LoanAbstractRepo, LoanAbstractUnitOf
 class LoanRepository(LoanAbstractRepo):
 
     def __init__(self):
-        self.loan_entity = []
-        self.vehicle_entity = []
+        self.loan_entity = None
+        self.vehicle_entity = None
 
     def get_loan(self):
         return self.loan_entity

@@ -34,6 +34,17 @@ class LoanService:
                 monthly_installment = yearly_installment / 12
                 yield LoanOutput(year=i+1, installment=monthly_installment, interest=interest_rate * 100)
 
+class LoanInputService:
+    def __init__(self, uow: LoanUnitOfWork):
+        self.uow = uow
+        self.base_interest_car_rate = 0.08
+        self.base_interest_motor_rate = 0.09
+
+    def input_loan(self, total_loan: float, tenor: int, down_payment: float):
+        self.uow.loan.add_loan(Loan(total_loan=total_loan, tenor=tenor, down_payment=down_payment))
+
+    def input_vehicle(self, vehicle_type: str, vehicle_condition: str, vehicle_year: int):
+        self.uow.loan.add_vehicle(Vehicle(vehicle_type=vehicle_type, vehicle_condition=vehicle_condition, vehicle_year=vehicle_year))
 
 
 

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from src.model.loan.domain.entity import Loan, Vehicle
 
-class LoanAbstractRepo:
+class LoanAbstractRepo(ABC):
     def __init__(self, db):
         self.db = db
 
