@@ -13,8 +13,8 @@ COPY ./src /app/src/
 COPY ./bin /app/bin/
 COPY ./tests /app/tests/
 
-CMD poetry run black --check . && poetry run isort --check-only .
-CMD poetry run pytest --cov=src --cov-report=xml tests/
+RUN poetry run black --check . && poetry run isort --check-only .
+RUN poetry run pytest --cov=src --cov-report=xml tests/
 
 
 
