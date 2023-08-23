@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ -f "main.py" ]]; then
+    MAIN_SCRIPT="./main.py"
+else
+    MAIN_SCRIPT="../main.py"
+fi
+
+# Get the root directory of the project
+ROOT_DIR="$(dirname $(dirname $0))"
+
+
+poetry run python "${MAIN_SCRIPT}" "$@"
+
+

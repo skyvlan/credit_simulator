@@ -18,7 +18,6 @@ class LoanOutput(BaseModel):
     interest: float
 
 
-class DataModel(Vehicle, Loan):
-    pass
+
 
 
