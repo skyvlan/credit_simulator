@@ -24,15 +24,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: isbang/compose-action@v1.5.1
-        with:
-          compose-file: ./docker-compose.yml
 
 
       # Runs a single command using the runners shell
       - name: Run Tests
         run: |
-         docker-compose up -d
+         docker-compose up --build -d
          docker start customer_service && docker ps
          docker exec -i poetry run black --check . && poetry run isort --check-only .
          docker exec -i poetry run pytest tests
