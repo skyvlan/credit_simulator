@@ -3,9 +3,6 @@ from typing import List
 import math
 class LoanService:
     def __init__(self, uow):
-        with uow:
-            self.loan = loan
-            self.vehicle = vehicle
         self.base_interest_car_rate = 0.08
         self.base_interest_motor_rate = 0.09
 
