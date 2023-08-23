@@ -31,7 +31,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run Tests
-        run: docker-compose up -d
-
+        run: |
+         docker-compose up -d
+         docker start customer_service && docker ps
+         docker exec -i poetry run black --check . && poetry run isort --check-only .
+         docker exec -i poetry run pytest tests
+         docker-compose down
 
 
