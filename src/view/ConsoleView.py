@@ -1,6 +1,8 @@
-from src.view.BaseView import BaseView
-from src.model.loan.domain.entity import LoanOutput
 from typing import List
+
+from src.model.loan.domain.entity import LoanOutput
+from src.view.BaseView import BaseView
+
 
 class ConsoleView(BaseView):
     def __init__(self):
@@ -71,5 +73,6 @@ class ConsoleView(BaseView):
 
     def output_loan(self, loan_output: List[LoanOutput]):
         for i in loan_output:
-            self.output(f"Tahun {i.year}: Rp.{i.installment}/bln, Suku Bunga: {i.interest}")
-
+            self.output(
+                f"Tahun {i.year}: Rp.{i.installment}/bln, Suku Bunga: {i.interest}"
+            )

@@ -30,6 +30,8 @@ jobs:
 
 
       # Runs a single command using the runners shell
-      - name: Run docker compose
+      - name: Run Tests
         run: docker-compose up -d
+
+
 

@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
+
 from src.model.loan.domain.entity import Loan, Vehicle
+
 
 class LoanAbstractRepo(ABC):
     def __init__(self, db):
@@ -17,6 +19,7 @@ class LoanAbstractRepo(ABC):
     def get_vehicle(self):
         raise NotImplementedError
 
+
 class LoanAbstractUnitOfWork(ABC):
     loan: LoanAbstractRepo
 
@@ -33,6 +36,3 @@ class LoanAbstractUnitOfWork(ABC):
     @abstractmethod
     def rollback(self):
         raise NotImplementedError
-
-
-

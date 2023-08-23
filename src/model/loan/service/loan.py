@@ -1,7 +1,10 @@
-from src.model.loan.domain.entity import Loan, Vehicle, LoanOutput
-from src.model.loan.adapter.uow import LoanUnitOfWork
-from typing import List
 import math
+from typing import List
+
+from src.model.loan.adapter.uow import LoanUnitOfWork
+from src.model.loan.domain.entity import Loan, LoanOutput, Vehicle
+
+
 class LoanService:
     def __init__(self, uow: LoanUnitOfWork):
         self.loan = uow.loan.get_loan()
@@ -22,7 +25,11 @@ class LoanService:
                 loan = base_loan + (base_loan * interest_rate)
                 yearly_installment = loan / self.loan.tenor
                 monthly_installment = yearly_installment / 12
-                yield LoanOutput(year=i+1, installment=monthly_installment, interest=interest_rate * 100)
+                yield LoanOutput(
+                    year=i + 1,
+                    installment=monthly_installment,
+                    interest=interest_rate * 100,
+                )
             else:
                 if i % 2 == 0:
                     interest_rate += 0.005
@@ -32,7 +39,12 @@ class LoanService:
                 loan = remaining_loan + (remaining_loan * interest_rate)
                 yearly_installment = loan / (self.loan.tenor - i)
                 monthly_installment = yearly_installment / 12
-                yield LoanOutput(year=i+1, installment=monthly_installment, interest=interest_rate * 100)
+                yield LoanOutput(
+                    year=i + 1,
+                    installment=monthly_installment,
+                    interest=interest_rate * 100,
+                )
+
 
 class LoanInputService:
     def __init__(self, uow: LoanUnitOfWork):
@@ -41,17 +53,17 @@ class LoanInputService:
         self.base_interest_motor_rate = 0.09
 
     def input_loan(self, total_loan: float, tenor: int, down_payment: float):
-        self.uow.loan.add_loan(Loan(total_loan=total_loan, tenor=tenor, down_payment=down_payment))
+        self.uow.loan.add_loan(
+            Loan(total_loan=total_loan, tenor=tenor, down_payment=down_payment)
+        )
 
-    def input_vehicle(self, vehicle_type: str, vehicle_condition: str, vehicle_year: int):
-        self.uow.loan.add_vehicle(Vehicle(vehicle_type=vehicle_type, vehicle_condition=vehicle_condition, vehicle_year=vehicle_year))
-
-
-
-
-
-
-
-
-
-
+    def input_vehicle(
+        self, vehicle_type: str, vehicle_condition: str, vehicle_year: int
+    ):
+        self.uow.loan.add_vehicle(
+            Vehicle(
+                vehicle_type=vehicle_type,
+                vehicle_condition=vehicle_condition,
+                vehicle_year=vehicle_year,
+            )
+        )
