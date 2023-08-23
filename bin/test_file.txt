@@ -1,0 +1,12 @@
+{
+    "vehicleModel":{
+        "vehicleCondition" : "Baru",
+        "vehicleType" : "Mobil",
+        "tahunMobil" : "2019",
+        "jumlahDownPayment" : "25000000",
+        "jumlahPinjaman" : "100000000",
+        "tenorCicilan":"5"
+    },
+    "responseCode":"00",
+    "responseMessage":"Succeed"
+}

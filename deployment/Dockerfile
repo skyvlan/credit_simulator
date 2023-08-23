@@ -5,12 +5,14 @@ RUN pip install poetry
 
 WORKDIR /app
 
-COPY poetry.lock pyproject.toml app.py /app/
+COPY poetry.lock pyproject.toml main.py /app/
 RUN poetry install --no-root --no-dev
 
 
 COPY ./src /app/src/
 COPY ./bin /app/bin/
+COPY ./tests /app/tests/
+
 
 
 CMD echo "test"
