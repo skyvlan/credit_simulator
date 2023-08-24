@@ -14,9 +14,4 @@ COPY ./bin /app/bin/
 COPY ./tests /app/tests/
 
 RUN poetry run black --check . && poetry run isort --check-only .
-RUN poetry run pytest --cov=src --cov-report=xml tests/
-
-
-
-
-
+RUN poetry run python -m pytest tests/

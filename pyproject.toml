@@ -40,3 +40,7 @@ skip = [
 ]
 
 
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "tests", "src"
+]
