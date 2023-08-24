@@ -87,7 +87,11 @@ class LoanController:
     def run_calculation_from_file(self, filepath):
         with open(filepath, "r") as file:
             data = file.read()
-        json_data = json.loads(data)
+        try:
+            json_data = json.loads(data)
+        except json.decoder.JSONDecodeError:
+            self.view.output("File tidak valid")
+            self.run_menu()
         json_data = json_data["vehicleModel"]
         self.loan_input_service = LoanInputService(uow=self.uow)
         self.loan_input_service.input_vehicle(
