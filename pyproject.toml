@@ -9,15 +9,10 @@ authors = ["radya"]
 python = "^3.8"
 pydantic = "^1.8.2"
 requests = "^2.31.0"
-
-
-[tool.poetry.dev-dependencies]
-pytest = "^6.2.2"
-prospector = "^1.5.1"
 black = "^22.3.0"
-isort = "^5.8.0"
+pytest = "^6.2.2"
 
-pydantic = "^1.8.2"
+
 
 [tool.black]
 line-length = 79
